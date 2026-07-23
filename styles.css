@@ -1,11 +1,49 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+:root {
+  --h1-font-size: 80px;
+  --h1-font-weight: 400;
+  --h1-font-space: 4px;
+  --h1-font-col-light: #111111;
+
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 32px;
+
+  --contact-button-max-size: 70px;
+  --contact-button-min-size: 50px;
+  --contact-button-size-percent: 2vw;
+  --contact-button-margin-top: 60px;
+  --contact-button-margin-bottom: 300px;
+  --contact-button-gap: 10vw;
+  --contact-button-gap-min: 40px;
+  --contact-button-gap-max: 90px;
+
+  --light-bg-color: #ffffff;
+  --light-font-color: #111111;
+  --dark-bg-color: #000000;
+  --dark-font-color: #ffffff;
+
+  --bg-color: var(--light-bg-color);
+  --font-color: var(--light-font-color);
+
+  --theme-toggle-size: 40px;
+  --theme-toggle-top: 30px;
+  --theme-toggle-left: 30px;
+}
+
+[data-theme="dark"] {
+  --bg-color: var(--dark-bg-color);
+  --font-color: var(--dark-font-color);
+}
+
 body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
-    background: #ffffff;
-    color: #111111;
+    background: var(--bg-color);
+    color: var(--font-color);
+    transition: background-color 0.25s, color 0.25s;
 }
 
 .container {
@@ -20,11 +58,11 @@ body {
 
 h1 {
     font-family: 'Playfair Display', serif;
-    font-weight: 400;
-    font-size: 80px;
-    letter-spacing: 3px;
+    font-weight: var(--h1-font-weight);
+    font-size: var(--h1-font-size);
+    letter-spacing: var(--h1-font-space);
     line-height: 1.1;
-    color: #111111;
+    color: var(--font-color);
 
     margin: 0;
 }
@@ -33,7 +71,7 @@ h1 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 20px;
-    color: #333;
+    color: var(--font-color);
 
     margin-top: 70px;
     margin-bottom: 50px;
@@ -48,7 +86,7 @@ h1 {
     font-weight: 400;
     font-size: 18px;
     line-height: 1.8;
-    color: #555555;
+    color: var(--font-color);
 
     text-align: left;      /* or justify */
 }
@@ -57,7 +95,12 @@ h1 {
     margin-bottom: 24px;
 }
 
+.body p:last-of-type {
+    margin-bottom: 0;
+}
+
 button {
+    margin-top: 50px;
     padding: 14px 30px;
     font-size: 16px;
 
@@ -70,11 +113,54 @@ button {
 }
 
 button:hover {
-    transform: scale(1.05);
+    transform: scale(1.5);
 }
 
 #message {
     margin-top: 25px;
     font-size: 20px;
     color: #6cff8f;
+}
+
+.contact-button-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(var(--contact-button-gap-min), var(--contact-button-gap), var(--contact-button-gap-max));
+
+    margin-top: var(--contact-button-margin-top);
+    margin-bottom: var(--contact-button-margin-bottom);
+}
+
+.contact-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.contact-button img {
+    width: clamp(var(--contact-button-min-size), var(--contact-button-size-percent), var(--contact-button-max-size));
+    height: auto;
+}
+
+.theme-toggle {
+    position: relative;
+    top: var(--theme-toggle-top);
+    left: var(--theme-toggle-left);
+    z-index: 1000;
+
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: none;
+
+    cursor: pointer;
+}
+
+.theme-toggle img {
+    display: block;
+    width: var(--theme-toggle-size);
+    height: var(--theme-toggle-size);
 }

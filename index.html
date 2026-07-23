@@ -10,6 +10,10 @@
 </head>
 <body>
 
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark mode">
+        <img id="theme-toggle-icon" src="icons/style-light.svg" alt="Toggle theme" data-icon="style">
+    </button>
+
     <div class="container">
 
         <div class="hero">
@@ -44,19 +48,27 @@
                 platform using <strong>@goldveintraffic</strong>, or email us at
                 <strong>max@goldveintraffic.com</strong>.
             </p>
-        </div>
 
-        <div class="contacts">
-            <button id="demoButton">
-                Click Me
-            </button>
-
-            <p id="message"></p>
+            <div class="contact-button-wrap">
+                <a class="contact-button" href="https://t.me/goldveintraffic" target="_blank" rel="noopener noreferrer" aria-label="Contact us on Telegram">
+                    <img src="icons/contact-tg-light.svg" alt="Telegram" data-icon="tg">
+                </a>
+                <a class="contact-button" href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" aria-label="Contact us on WhatsApp">
+                    <img src="icons/contact-wp-light.svg" alt="WhatsApp" data-icon="wp">
+                </a>
+                <a class="contact-button" href="https://fb.me/567" target="_blank" rel="noopener noreferrer" aria-label="Contact us on Facebook">
+                    <img src="icons/contact-fb-light.svg" alt="Facebook" data-icon="fb">
+                </a>
+                <a class="contact-button" href="mailto:john@example.com?subject=Meeting%20Request&body=Hi%20John" aria-label="Email us">
+                    <img src="icons/contact-ml-light.svg" alt="Email" data-icon="ml">
+                </a>
+            </div>
         </div>
 
     </div>
 
     <script src="script.js"></script>
+    <script src="theme.js"></script>
 
 </body>
 </html>
