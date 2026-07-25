@@ -1,7 +1,11 @@
-const THEME_STORAGE_KEY = "theme";
+const AUTO_THEME_ENABLED = 0;
 
 function iconSrc(key, theme) {
-    return key === "style" ? `icons/style-${theme}.svg` : `icons/contact-${key}-${theme}.svg`;
+    return `icons/contact-${key}-${theme}.svg`;
+}
+
+function brandIconSrc(theme) {
+    return `icons/gold-vein-${theme}.png`;
 }
 
 function applyTheme(theme) {
@@ -9,13 +13,19 @@ function applyTheme(theme) {
     document.querySelectorAll("img[data-icon]").forEach((img) => {
         img.src = iconSrc(img.dataset.icon, theme);
     });
+    document.querySelectorAll("img[data-brand-icon]").forEach((img) => {
+        img.src = brandIconSrc(theme);
+    });
 }
 
-const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
-applyTheme(storedTheme === "dark" ? "dark" : "light");
+if (AUTO_THEME_ENABLED === 1) {
+    const colorSchemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
-document.getElementById("theme-toggle").addEventListener("click", () => {
-    const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
-    localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
-    applyTheme(nextTheme);
-});
+    applyTheme(colorSchemeQuery.matches ? "dark" : "light");
+
+    colorSchemeQuery.addEventListener("change", (event) => {
+        applyTheme(event.matches ? "dark" : "light");
+    });
+} else {
+    applyTheme("light");
+}

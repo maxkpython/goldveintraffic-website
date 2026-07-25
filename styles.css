@@ -2,6 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 :root {
+  --container-top-padding: 12vh;
+
   --h1-font-size: 80px;
   --h1-font-weight: 400;
   --h1-font-space: 4px;
@@ -20,6 +22,12 @@
   --contact-button-gap-min: 40px;
   --contact-button-gap-max: 90px;
 
+  --gold-vein-image-position: relative;
+  --gold-vein-image-min-width: 100px;
+  --gold-vein-image-max-width: 600px;
+  --gold-vein-image-margin-top: 10px;
+  --gold-vein-image-margin-bottom: 35px;
+
   --light-bg-color: #ffffff;
   --light-font-color: #111111;
   --dark-bg-color: #000000;
@@ -27,10 +35,6 @@
 
   --bg-color: var(--light-bg-color);
   --font-color: var(--light-font-color);
-
-  --theme-toggle-size: 40px;
-  --theme-toggle-top: 30px;
-  --theme-toggle-left: 30px;
 }
 
 [data-theme="dark"] {
@@ -49,7 +53,7 @@ body {
 .container {
     min-height: 100vh;
     box-sizing: border-box;
-    padding-top: 14.5vh;
+    padding-top: var(--container-top-padding);
 }
 
 .hero {
@@ -73,8 +77,18 @@ h1 {
     font-size: 20px;
     color: var(--font-color);
 
-    margin-top: 70px;
+    margin-top: 0;
     margin-bottom: 50px;
+}
+
+.gold-vein-image {
+    display: block;
+    position: var(--gold-vein-image-position);
+
+    width: clamp(var(--gold-vein-image-min-width), 100%, var(--gold-vein-image-max-width));
+    height: auto;
+
+    margin: var(--gold-vein-image-margin-top) auto var(--gold-vein-image-margin-bottom);
 }
 
 .body {
@@ -113,7 +127,7 @@ button {
 }
 
 button:hover {
-    transform: scale(1.5);
+    transform: scale(1.1);
 }
 
 #message {
@@ -142,25 +156,4 @@ button:hover {
 .contact-button img {
     width: clamp(var(--contact-button-min-size), var(--contact-button-size-percent), var(--contact-button-max-size));
     height: auto;
-}
-
-.theme-toggle {
-    position: relative;
-    top: var(--theme-toggle-top);
-    left: var(--theme-toggle-left);
-    z-index: 1000;
-
-    margin: 0;
-    padding: 0;
-    border: none;
-    border-radius: 0;
-    background: none;
-
-    cursor: pointer;
-}
-
-.theme-toggle img {
-    display: block;
-    width: var(--theme-toggle-size);
-    height: var(--theme-toggle-size);
 }
