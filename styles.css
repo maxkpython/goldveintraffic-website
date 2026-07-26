@@ -8,6 +8,9 @@
   --h1-font-weight: 400;
   --h1-font-space: 4px;
   --h1-font-col-light: #111111;
+  --h1-margin-top: 20px;
+
+  --subtitle-margin-top: 35px;
 
   --spacing-sm: 8px;
   --spacing-md: 16px;
@@ -24,9 +27,9 @@
 
   --gold-vein-image-position: relative;
   --gold-vein-image-min-width: 100px;
-  --gold-vein-image-max-width: 600px;
-  --gold-vein-image-margin-top: 10px;
-  --gold-vein-image-margin-bottom: 35px;
+  --gold-vein-image-max-width: 150px;
+  --gold-vein-image-margin-top: 0px;
+  --gold-vein-image-margin-bottom: 0px;
 
   --light-bg-color: #ffffff;
   --light-font-color: #111111;
@@ -68,7 +71,7 @@ h1 {
     line-height: 1.1;
     color: var(--font-color);
 
-    margin: 0;
+    margin: var(--h1-margin-top);
 }
 
 .subtitle {
@@ -77,7 +80,7 @@ h1 {
     font-size: 20px;
     color: var(--font-color);
 
-    margin-top: 0;
+    margin-top: var(--subtitle-margin-top);
     margin-bottom: 50px;
 }
 
@@ -89,6 +92,11 @@ h1 {
     height: auto;
 
     margin: var(--gold-vein-image-margin-top) auto var(--gold-vein-image-margin-bottom);
+}
+
+.gold-vein-image--hidden {
+    display: none;
+    margin: 0;
 }
 
 .body {

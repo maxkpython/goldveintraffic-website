@@ -1,4 +1,5 @@
 const AUTO_THEME_ENABLED = 0;
+const GOLD_VEIN_IMAGE_ENABLED = 0;
 
 function iconSrc(key, theme) {
     return `icons/contact-${key}-${theme}.svg`;
@@ -17,6 +18,10 @@ function applyTheme(theme) {
         img.src = brandIconSrc(theme);
     });
 }
+
+document.querySelectorAll("img[data-brand-icon]").forEach((img) => {
+    img.classList.toggle("gold-vein-image--hidden", GOLD_VEIN_IMAGE_ENABLED !== 1);
+});
 
 if (AUTO_THEME_ENABLED === 1) {
     const colorSchemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
