@@ -245,7 +245,22 @@ MISSION
   background-repeat: no-repeat;
 }
 
-/* ---- Stacked layout: below 1214px ---- */
+/* ---- Media: fixed 60%, "window" onto a viewport-fixed background ---- */
+.mission__media {
+  flex: 0 0 60%;
+  max-width: 60%;
+  overflow: hidden;
+  background-image: url('icons/screenshot_large.png');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: 60%;
+  background-repeat: no-repeat;
+}
+.mission__media-img {
+  display: none; /* hidden on desktop, shown only in mobile media query */
+}
+
+/* ---- Stacked layout: below 910px ---- */
 @media (max-width: 910px) {
   .mission {
     min-height: 75vh;
@@ -262,26 +277,25 @@ MISSION
     width: 100%;
     order: 1;
   }
-    .mission__media {
+  .mission__media {
     flex: 0 0 auto;
     box-sizing: border-box;
     width: 100%;
     max-width: 100%;
-    height: 45.5vh;
     order: 2;
     margin: 0;
-
-    /* stop the viewport-fixed background trick */
-    background-attachment: scroll;
-    background-size: cover;
-
-    /* pad the image in from each edge individually */
+    background-image: none;     /* kill the desktop background entirely */
     padding-top: 30px;
     padding-bottom: 30px;
     padding-left: 30px;
     padding-right: 30px;
-    background-origin: content-box;
-    background-clip: content-box;
+    display: flex;
+    justify-content: center;
+  }
+  .mission__media-img {
+    display: block;             /* now shown */
+    max-width: 100%;
+    height: auto;                /* always uncropped, natural aspect ratio */
   }
   .mission__title {
     font-size: 20px;
