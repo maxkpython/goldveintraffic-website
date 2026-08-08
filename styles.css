@@ -262,18 +262,7 @@ MISSION
     width: 100%;
     order: 1;
   }
-  /*.mission__media {
-    flex: 0 0 auto;
-    box-sizing: border-box;
-    width: calc(100% - 30px);
-    max-width: calc(100% - 120px);
-    height: 35.5vh;
-    order: 2;
-    margin-left: 60px;
-    margin-right: 60px;
-    margin-bottom: 60px;
-  }*/
-  .mission__media {
+    .mission__media {
     flex: 0 0 auto;
     box-sizing: border-box;
     width: 100%;
@@ -281,6 +270,18 @@ MISSION
     height: 45.5vh;
     order: 2;
     margin: 0;
+
+    /* stop the viewport-fixed background trick */
+    background-attachment: scroll;
+    background-size: cover;
+
+    /* pad the image in from each edge individually */
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-origin: content-box;
+    background-clip: content-box;
   }
   .mission__title {
     font-size: 20px;
